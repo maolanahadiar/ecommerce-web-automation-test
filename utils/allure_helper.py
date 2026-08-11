@@ -32,19 +32,37 @@ class AllureHelper:
 
     @staticmethod
     def create_executor(results_dir):
+        """Create executor metadata for local and CI execution"""
+        
         os.makedirs(results_dir, exist_ok=True)
 
-        executor = {
-            "name": "Local - Maolana Hadiar",
-            "type": "Local",
-            "buildName": "Manual Execution",
-            "buildOrder": 1,
-        }
-        file_path = os.path.join(
-            results_dir,
-            "executor.json"
-        )
-        with open(file_path, "w", encoding="utf-8") as file:
+        if os.getenv("CI", "").lower() == "true":
+            executor = {
+                "name": "CI - GitHub Actions",
+                "type": "github",
+                "buildName": os.getenv("GITHUB_WORKFLOW", "Web UI Automation Pipeline"),
+                "buildOrder": os.getenv("GITHUB_RUN_NUMBER", 1),
+                "buildUrl": (
+                    f"{os.getenv('GITHUB_SERVER_URL', '')}/"
+                    f"{os.getenv('GITHUB_REPOSITORY', '')}/actions/runs/"
+                    f"{os.getenv('GITHUB_RUN_ID', '')}"
+                ),
+                "reportName": "Ecommerce Web UI Automation Test Report",
+            }
+        else:
+            executor = {
+                "name": "Local - Maolana Hadiar",
+                "type": "local",
+                "buildName": "Manual Execution",
+                "buildOrder": 1,
+                "reportName": "Ecommerce Web UI Automation Test Report",
+            }
+
+        with open(
+            os.path.join(results_dir, "executor.json"),
+            "w",
+            encoding="utf-8",
+        ) as file:
             json.dump(executor, file, indent=4)
             
     @staticmethod

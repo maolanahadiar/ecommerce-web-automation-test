@@ -1,16 +1,11 @@
-# Selenium Web Automation Framework for Ecommerce
-
-This project contains automated test for the [DemoBlaze](https://demoblaze.com) website built with Python, Selenium, Pytest, and Allure to demonstrates best practices for web automation testing.
-The goal is to make the automation framework easy to maintain, reusable, and scalable. 
-
----
-
-## Tech Stack
+# Ecommerce Web Automation Test
 
 ![Python](https://img.shields.io/badge/Python-3.14-blue)
 ![Selenium](https://img.shields.io/badge/Selenium-4.45-green)
 ![Pytest](https://img.shields.io/badge/Pytest-9.1-orange)
 ![Allure](https://img.shields.io/badge/Allure-2.16-red)
+
+This project contains automated test for the [DemoBlaze Ecommerce Website](https://demoblaze.com) built with Python, Selenium, Pytest to demonstrates best practices for web automation testing with Allure reporting, GitHub Actions CI/CD integration, and automated test summary notifications through Telegram.
 
 ---
 
@@ -22,22 +17,28 @@ The goal is to make the automation framework easy to maintain, reusable, and sca
 
 ---
 
-## Continuous Integration (CI)
+## Web Automation Testing Coverage
 
-This project uses GitHub Actions to automatically run the automation test suite on every push and pull request.
+### 🟢 Positive Scenarios
 
-The CI workflow performs the following steps:
+| Module | Scenario | Status |
+|:--|:--|:--:|
+| **Authentication** | Login with valid credentials | ✅ |
+| | Register new account | ✅ |
+| | Logout account | ✅ |
+| **Product** | View product details | ✅ |
+| **Cart** | Add product to cart | ✅ |
+| | View product details in cart | ✅ |
+| | Remove product from cart | ✅ |
+| **Checkout** | Complete checkout process | ✅ |
 
-- Checkout Repository
-- Setup Python
-- Install Google Chrome
-- Install Dependencies
-- Execute Selenium Test
-- Upload Allure Result
-  
-#### Latest Execution Status:
+### 🔴 Negative Scenarios
 
-[![Selenium - Ecommerce Web Automation](https://github.com/maolanahadiar/ecommerce-web-automation-framework/actions/workflows/selenium_ci.yml/badge.svg)](https://github.com/maolanahadiar/ecommerce-web-automation-framework/actions/workflows/selenium_ci.yml)
+| Module | Scenario | Status |
+|:--|:--|:--:|
+| **Authentication** | Login with invalid password | ✅ |
+| | Login with empty credentials | ✅ |
+| | Login with non-existing account | ✅ |
 
 ---
 
@@ -46,7 +47,7 @@ The CI workflow performs the following steps:
 1. Clone repository:
 
 ```bash
-git clone https://github.com/maolanahadiar/ecommerce-web-automation-framework.git
+git clone https://github.com/maolanahadiar/ecommerce-web-automation-test.git
 ```
 
 2. Move to project directory:
@@ -116,6 +117,44 @@ Ecommerce Web Automation: [Watch Demo](https://drive.google.com/file/d/1GMziW4Xo
 
 ---
 
+## CI/CD
+
+GitHub Actions pipeline automatically runs API tests on:
+
+- Push
+- Pull Request
+- Manual Trigger
+
+Pipeline flow:
+
+```
+Checkout Repository
+   |
+Setup Python Environment
+   |
+Install Google Chrome
+   |
+Install Dependencies
+   |
+Install Allure CLI
+   |
+Run Web UI Tests
+   |
+Generate Allure Report
+   |
+Deploy Allure Report to GitHub Pages
+   |
+Upload Test Artifacts
+   |
+Send Test Summary Notification to Telegram
+```
+
+#### Latest Execution Status:
+
+[![Ecommerce Web Automation](https://github.com/maolanahadiar/ecommerce-web-automation-test/actions/workflows/selenium_ci.yml/badge.svg)](https://github.com/maolanahadiar/ecommerce-web-automation-test/actions/workflows/selenium_ci.yml)
+
+---
+
 ## Test Report
 
 > Example of test report using allure when all test cases are passed
@@ -127,3 +166,5 @@ Ecommerce Web Automation: [Watch Demo](https://drive.google.com/file/d/1GMziW4Xo
 
 <p align="center">
 <img src="https://github.com/user-attachments/assets/9c0d6d6b-de06-4ac6-8c94-c7d851bb7232" width="900">
+
+➡️ [Click here to see the Live Allure Report](https://maolanahadiar.github.io/ecommerce-web-automation-test/)
