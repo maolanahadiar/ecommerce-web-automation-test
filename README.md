@@ -151,7 +151,7 @@ Send Test Summary Notification to Telegram
 
 #### Latest Execution Status:
 
-[![Ecommerce Web Automation](https://github.com/maolanahadiar/ecommerce-web-automation-test/actions/workflows/selenium_ci.yml/badge.svg)](https://github.com/maolanahadiar/ecommerce-web-automation-test/actions/workflows/selenium_ci.yml)
+[![Ecommerce Web Automation](https://github.com/maolanahadiar/ecommerce-web-automation-test/actions/workflows/web-ui-test.yml/badge.svg)](https://github.com/maolanahadiar/ecommerce-web-automation-test/actions/workflows/web-ui-test.yml)
 
 ---
 
